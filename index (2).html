@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>La Tablée</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E🍽️%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&family=DynaPuff:wght@500;700&family=Baloo+Bhaijaan+2:wght@600&family=Baloo+2:wght@600&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+<style>
+:root{--hd:DynaPuff,"Baloo 2","Baloo Bhaijaan 2","ZCOOL KuaiLe","Arial Rounded MT Bold",system-ui,sans-serif;--red:#920321;--rt:#920321;--ink:#2B1A17;--muted:#6B5550;--paper:#FFFBF8;--blush:#F8E6E3;--line:#E8D3CF;--card:#fff;--gy:rgba(146,3,33,.13);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#F6E8E5;--muted:#C9AFAA;--paper:#1C1213;--blush:#2C1A1D;--line:#4A2E31;--card:#251719;--rt:#FF8FA3;--gy:rgba(255,120,140,.10)}}
+:root[data-theme="dark"]{--ink:#F6E8E5;--muted:#C9AFAA;--paper:#1C1213;--blush:#2C1A1D;--line:#4A2E31;--card:#251719;--rt:#FF8FA3;--gy:rgba(255,120,140,.10)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1.05rem/1.6 Figtree,system-ui,"Noto Sans Arabic","PingFang SC","Microsoft YaHei",sans-serif}
+h1,h2,h3,.logo{font-family:var(--hd);font-weight:600;line-height:1.15;margin:0}
+p{margin:.6rem 0;max-width:62ch}
+a{color:var(--rt)}
+:focus-visible{outline:3px solid var(--rt);outline-offset:3px}
+.top{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1.4rem;padding:.9rem clamp(1rem,4vw,3rem);border-bottom:2px solid var(--red);background:var(--paper);position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+.logo{font-size:1.6rem;color:var(--rt);text-decoration:none;margin-inline-end:auto}
+nav{display:flex;gap:.2rem;overflow-x:auto;max-width:100%}
+nav a{padding:.45rem .8rem;border-radius:99px;text-decoration:none;color:var(--ink);font-weight:600;white-space:nowrap}
+nav a:hover{background:var(--blush)}
+nav a[aria-current="page"]{background:var(--red);color:#fff}
+select{font:inherit;padding:.4rem .6rem;border:2px solid var(--red);border-radius:10px;background:var(--card);color:var(--ink)}
+.page{min-height:60vh}
+.wrap{max-width:60rem;margin:0 auto;padding:2.5rem clamp(1rem,4vw,2rem)}
+.hero{background-color:var(--paper);background-image:linear-gradient(90deg,var(--gy) 50%,transparent 50%),linear-gradient(var(--gy) 50%,transparent 50%);background-size:56px 56px;padding:clamp(2rem,8vw,5rem) clamp(1rem,4vw,3rem)}
+.hero h1{font-size:clamp(2rem,6vw,3.2rem);color:var(--rt)}
+.lead{font-size:1.2rem}
+.btn{display:inline-block;background:var(--red);color:#fff;padding:.7rem 1.4rem;border-radius:99px;font-weight:700;text-decoration:none;margin-top:.6rem;border:0;font-size:1rem;cursor:pointer;font-family:inherit}
+.btn:hover{filter:brightness(1.2)}
+.hrs{font-weight:600;color:var(--muted);margin-top:1rem}
+h2{font-size:clamp(1.6rem,4vw,2.3rem);color:var(--rt);margin-bottom:.4rem}
+.dot{width:.85rem;height:.85rem;border-radius:50%;flex:none}
+.tabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0}
+.tabs button{font:inherit;font-weight:600;padding:.5rem 1.1rem;border-radius:99px;border:2px solid var(--red);background:transparent;color:var(--ink);cursor:pointer;transition:background .15s}
+.tabs button[aria-selected="true"]{background:var(--red);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:1rem;padding:0;list-style:none;margin:0}
+.dish{background:var(--card);border:1px solid var(--line);border-inline-start:8px solid var(--c);border-radius:14px;padding:1rem 1.1rem;display:flex;flex-direction:column;gap:.2rem}
+.dish small{color:var(--muted);font-size:.9rem}
+.dish b{font-size:1.1rem}
+.dish .pr{color:var(--rt);font-weight:700}
+.fnd{display:grid;grid-template-columns:repeat(auto-fill,minmax(10.5rem,1fr));gap:1rem;list-style:none;padding:0;margin:1.2rem 0 0}
+.fnd li{background:var(--blush);border-radius:18px;padding:1.1rem;text-align:center}
+.av{width:3.6rem;height:3.6rem;border-radius:50%;display:grid;place-items:center;color:#fff;font:700 1.5rem var(--hd);margin:0 auto .5rem;background:var(--c)}
+.fnd b{display:block;font-size:1.1rem}
+.fnd small{display:block;color:var(--muted)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:2rem}
+dl{margin:0}dt{font-weight:700;color:var(--rt);margin-top:.9rem}dd{margin:0}
+label{display:block;font-weight:600;margin-top:.8rem}
+input,textarea{width:100%;font:inherit;padding:.6rem .8rem;border:2px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+input:focus,textarea:focus{border-color:var(--red)}
+#ok{font-weight:700;color:var(--rt)}
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:.7rem 0;padding:0 1.1rem}
+summary{cursor:pointer;font-weight:700;padding:1rem 0;list-style:none;display:flex;justify-content:space-between;gap:1rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--rt);font-size:1.4rem;line-height:1}
+details[open] summary::after{content:"–"}
+details p{margin-top:0;padding-bottom:1rem}
+footer{border-top:2px solid var(--red);padding:1.5rem clamp(1rem,4vw,3rem);color:var(--muted);font-size:.95rem}
+footer strong{font-family:var(--hd);color:var(--rt);font-weight:600;font-size:1.2rem}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* Redesign layer */
+.logo::before{content:"";display:inline-block;width:1.2rem;height:1.2rem;border:4px solid var(--red);border-radius:50%;background:var(--card);margin-inline-end:.5rem;vertical-align:-.1rem}
+.hero{padding:clamp(2.5rem,7vw,5rem) clamp(1rem,4vw,3rem) clamp(3rem,8vw,5.5rem)}
+.hw{max-width:56rem;margin:0 auto}
+.hero h1{font-size:clamp(2.4rem,8.5vw,4.8rem);max-width:14ch}
+.hero h2{font-size:clamp(1.3rem,3vw,1.7rem);margin-top:3rem;color:var(--ink)}
+.hero .btn{padding:.85rem 1.8rem;font-size:1.1rem}
+.table{list-style:none;display:flex;flex-wrap:wrap;gap:1.6rem 1.8rem;padding:0;margin:1.6rem 0 0}
+.table li{display:flex;flex-direction:column;align-items:center;gap:.7rem;font-weight:700}
+.table li:nth-child(even){translate:0 1.1rem}
+.table li.a{animation:drop .7s cubic-bezier(.3,1.5,.5,1) both;animation-delay:calc(var(--i)*.1s)}
+@keyframes drop{from{opacity:0;transform:translateY(-2rem) rotate(-10deg)}}
+.pl{width:clamp(6rem,16vw,8.4rem);aspect-ratio:1;border-radius:50%;background:var(--card);display:grid;place-items:center;text-align:center;font:600 clamp(1.15rem,3vw,1.6rem) var(--hd);box-shadow:inset 0 0 0 7px var(--card),inset 0 0 0 11px var(--c),0 8px 0 -2px rgba(43,26,23,.1)}
+.tabs button{min-height:2.8rem;font-size:1.05rem}
+.board{list-style:none;margin:0;padding:.3rem 1.5rem;max-width:42rem;background:var(--card);border:3px solid var(--red);border-radius:26px;box-shadow:0 0 0 6px var(--paper),0 0 0 8px var(--red)}
+.dish{flex-direction:row;align-items:center;gap:.9rem;border:0;border-radius:0;background:none;padding:1rem 0}
+.dish+.dish{border-top:2px dotted var(--line)}
+.dish .dot{width:1.1rem;height:1.1rem;background:var(--c)}
+.dish b{display:block;font:600 1.15rem var(--hd)}
+.dish .pr{margin-inline-start:auto;font:700 1.2rem var(--hd)}
+.big{font-size:1.4rem;line-height:1.5;max-width:40ch}
+.fnd li{background:none;padding:0}
+.fnd .av{width:5.2rem;height:5.2rem;background:var(--card);color:var(--ink);box-shadow:inset 0 0 0 5px var(--card),inset 0 0 0 8px var(--c),0 6px 0 -2px rgba(43,26,23,.1)}
+.fnd b{font:600 1.2rem var(--hd)}
+dl{background:var(--red);color:#fff;padding:1.6rem 1.8rem;border-radius:26px 26px 26px 4px;align-self:start}
+dl dt{color:#FFD3DA}
+details{border-width:2px;border-radius:20px}
+details[open]{border-color:var(--red)}
+summary{font:600 1.1rem var(--hd)}
+footer{background:var(--red);color:#fff;border:0;font-size:1rem;padding-block:2rem}
+footer strong{color:#fff;font-size:1.6rem}
+@media(prefers-reduced-motion:reduce){.table li.a{animation:none}}
+
+/* UX layer */
+.skip{position:absolute;inset-inline-start:.5rem;top:-4rem;background:var(--red);color:#fff;padding:.6rem 1rem;border-radius:10px;z-index:9}
+.skip:focus{top:.5rem}
+h1:focus,h2:focus{outline:none}
+nav a{min-height:2.75rem;display:inline-flex;align-items:center}
+select{min-height:2.75rem}
+.stat{display:inline-flex;align-items:center;gap:.6rem;background:var(--blush);color:var(--ink);padding:.4rem 1rem;border-radius:99px;font-weight:700;font-size:.98rem;margin:.4rem 0}
+dd.stat{display:flex;width:fit-content;margin-top:.6rem}
+.sd{width:.8rem;height:.8rem;border-radius:50%;flex:none}
+.sd.on{background:#2E9E4F}
+.sd.off{background:var(--red)}
+.acts{display:flex;flex-wrap:wrap;gap:.7rem;margin:.8rem 0 0}
+.acts .btn{margin:0}
+.btn.ghost{background:transparent;color:var(--rt);box-shadow:inset 0 0 0 2px var(--red)}
+.tabs button[aria-pressed="true"]{background:var(--red);color:#fff}
+.vt{display:inline-flex;align-items:center;gap:.6rem;font-weight:600;margin:0 0 1.2rem;cursor:pointer;min-height:2.75rem}
+.vt input{width:1.3rem;height:1.3rem;padding:0;accent-color:var(--red)}
+.vg{font:700 .78rem Figtree,system-ui,sans-serif;background:var(--blush);color:var(--rt);padding:.1rem .6rem;border-radius:99px;margin-inline-start:.6rem}
+.nov{color:var(--muted);padding:1.2rem 0;list-style:none}
+.row3{display:grid;grid-template-columns:repeat(auto-fit,minmax(8rem,1fr));gap:0 .8rem}
+#cf h3{font-size:1.5rem;color:var(--rt)}
+dl a{color:#fff}
+
+/* Table setting */
+.hl{background:transparent;box-shadow:inset 0 0 0 1.5px var(--red)}
+.note{margin-top:1.6rem;max-width:42rem;color:var(--muted)}
+.table{justify-content:center;gap:1.8rem .2rem;padding:2.2rem 1rem 2.8rem;border-radius:32px;background-color:#920321;background-image:linear-gradient(90deg,rgba(255,255,255,.16) 50%,transparent 50%),linear-gradient(rgba(255,255,255,.16) 50%,transparent 50%);background-size:44px 44px;box-shadow:inset 0 0 0 4px rgba(255,255,255,.35),0 12px 0 -2px rgba(43,26,23,.2)}
+.table li{padding:0 1.7rem;color:#fff}
+.table li:nth-child(even){translate:0 .6rem}
+.pl{position:relative;background:radial-gradient(circle at 35% 30%,#fff 0 55%,#efe9e4 100%);color:#2B1A17;box-shadow:inset 0 0 0 5px #fff,inset 0 0 0 7px #E3DAD4,inset 0 0 0 12px #fff,inset 0 0 0 14px var(--c),0 12px 14px -6px rgba(0,0,0,.55)}
+.pl::before,.pl::after{content:"";position:absolute;top:50%;translate:0 -50%;box-shadow:0 3px 4px rgba(0,0,0,.35)}
+.pl::before{inset-inline-start:-1.55rem;width:.75rem;height:66%;border-radius:.3rem .3rem .45rem .45rem;background:linear-gradient(#d8d8d8,#d8d8d8) bottom/100% 58% no-repeat,repeating-linear-gradient(90deg,#d8d8d8 0 .16rem,transparent .16rem .29rem) top/100% 42% no-repeat}
+.pl::after{inset-inline-end:-1.45rem;width:.62rem;height:72%;border-radius:.6rem .6rem .25rem .25rem;background:linear-gradient(90deg,#f2f2f2,#b4b4b4)}
+.table small{color:#fff}
+@media(max-width:520px){.table li{padding:0 1.5rem}.pl{width:5.6rem}}
+
+/* Menu details */
+.vg{border:1.5px solid transparent;display:inline-block;line-height:1.4}
+.vg.dsh{background:transparent;box-shadow:none;border:1.5px dashed var(--rt)}
+.dish{align-items:flex-start}
+.dish .dot{margin-top:.5rem}
+.dt{display:flex;flex-direction:column;gap:.15rem;min-width:0}
+.ds{color:var(--muted);font-size:.95rem;line-height:1.4}
+.tg{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.4rem}
+.tg .vg,.lgd .vg{margin:0}
+.sec{font:600 1.1rem var(--hd);color:var(--rt);padding:1.3rem 0 .3rem;list-style:none}
+.dish+.sec{border-top:2px solid var(--red);margin-top:.5rem}
+.lgd{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem;margin:0 0 1.2rem;max-width:none}
+.lgd b{margin-inline-end:.4rem}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+</style>
+</head>
+<body>
+<a class="skip" href="#" data-i18n="skip"></a>
+<header class="top">
+  <a class="logo" href="#home">La Tablée</a>
+  <nav id="nav" aria-label="Main">
+    <a href="#home" data-i18n="n_home"></a><a href="#menu" data-i18n="n_menu"></a><a href="#about" data-i18n="n_about"></a><a href="#contact" data-i18n="n_contact"></a><a href="#faq" data-i18n="n_faq"></a>
+  </nav>
+  <select id="lang" aria-label="Language">
+    <option value="0">English</option><option value="1">Français</option><option value="2">Italiano</option><option value="3">中文</option><option value="4">الدارجة المغربية</option>
+  </select>
+</header>
+
+<main>
+<section id="home" class="page">
+  <div class="hero"><div class="hw">
+    <h1 data-i18n="h1"></h1>
+    <p class="lead" data-i18n="lead"></p>
+    <p class="stat" role="status"></p>
+    <p class="acts"><a class="btn" href="#menu" data-i18n="cta"></a><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&amp;query=3000+Chem.+de+la+C%C3%B4te-Sainte-Catherine+Montr%C3%A9al+QC+H3T+2A7" target="_blank" rel="noopener" data-i18n="dir"></a></p>
+    <p class="hrs" data-i18n="hours"></p>
+    <h2 data-i18n="k_t"></h2><p data-i18n="k_p"></p>
+    <ul class="table" id="table"></ul>
+  </div></div>
+</section>
+
+<section id="menu" class="page" hidden><div class="wrap">
+  <h2 data-i18n="m_t"></h2><p data-i18n="m_p"></p>
+  <p class="lgd" id="lgd"></p>
+  <div class="tabs" id="tabs"></div>
+  <label class="vt"><input type="checkbox" id="vg"><span data-i18n="veg_f"></span></label>
+  <ul class="board" id="dishes"></ul>
+  <p class="note" data-i18n="hal_n"></p>
+  <p class="note" id="byo" data-i18n="byo" hidden></p>
+</div></section>
+
+<section id="about" class="page" hidden><div class="wrap">
+  <h2 data-i18n="a_t"></h2><p class="big" data-i18n="a_1"></p><p data-i18n="a_2"></p>
+  <h2 data-i18n="a_f"></h2>
+  <ul class="fnd" id="fnd"></ul>
+</div></section>
+
+<section id="contact" class="page" hidden><div class="wrap">
+  <h2 data-i18n="c_t"></h2>
+  <div class="two">
+    <div>
+      <dl>
+        <dt data-i18n="c_a"></dt><dd>3000 Chem. de la Côte-Sainte-Catherine<br>Montréal, QC H3T 2A7</dd>
+        <dt data-i18n="c_h"></dt><dd data-i18n="c_hh"></dd><dd class="stat" role="status"></dd>
+        <dt data-i18n="c_p"></dt><dd dir="ltr"><a href="tel:+15145550142">(514) 555-0142</a></dd>
+        <dt data-i18n="c_e"></dt><dd dir="ltr"><a href="mailto:bonjour@latablee.example">bonjour@latablee.example</a></dd>
+      </dl>
+      <p class="acts"><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&amp;query=3000+Chem.+de+la+C%C3%B4te-Sainte-Catherine+Montr%C3%A9al+QC+H3T+2A7" target="_blank" rel="noopener" data-i18n="dir"></a><a class="btn ghost" href="tel:+15145550142" data-i18n="call"></a></p>
+    </div>
+    <form id="cf">
+      <h3 data-i18n="f_t"></h3>
+      <label for="fn" data-i18n="f_n"></label><input id="fn" autocomplete="name" required>
+      <label for="fc" data-i18n="f_c"></label><input id="fc" autocomplete="email" required>
+      <div class="row3">
+        <div><label for="fd" data-i18n="f_d"></label><input id="fd" type="date" required></div>
+        <div><label for="ft" data-i18n="f_ti"></label><input id="ft" type="time" min="08:00" max="21:00" step="900" required></div>
+        <div><label for="fg" data-i18n="f_g"></label><input id="fg" type="number" min="1" max="20" value="2" required></div>
+      </div>
+      <label for="fm" data-i18n="f_m"></label><textarea id="fm" rows="3"></textarea>
+      <button class="btn" type="submit" data-i18n="f_s"></button>
+      <p id="ok" role="status"></p>
+    </form>
+  </div>
+</div></section>
+
+<section id="faq" class="page" hidden><div class="wrap">
+  <h2 data-i18n="q_t"></h2><div id="faqs"></div>
+</div></section>
+</main>
+
+<footer><strong>La Tablée</strong><br><span data-i18n="tag"></span> · 3000 Chem. de la Côte-Sainte-Catherine, Montréal<br><span data-i18n="foot"></span></footer>
+
+<script>
+const T={
+n_home:["Home","Accueil","Home","首页","الرئيسية"],
+n_menu:["Menu","Menu","Menù","菜单","المنيو"],
+n_about:["About us","À propos","Chi siamo","关于我们","علينا"],
+n_contact:["Contact us","Contact","Contatti","联系我们","تواصل معنا"],
+n_faq:["FAQ","FAQ","FAQ","常见问题","الأسئلة الشائعة"],
+tag:["Five kitchens, one table.","Cinq cuisines, une seule table.","Cinque cucine, una sola tavola.","五种厨房，一张餐桌。","خمس مطابخ، مائدة وحدة."],
+h1:["Come as you are. Eat like family.","Venez comme vous êtes. Mangez comme en famille.","Vieni come sei. Mangia come in famiglia.","随心而来，像家人一样用餐。","مرحبا بيك كيف ما نتي. كُل بحال فالدار."],
+lead:["A neighbourhood kitchen on Côte-Sainte-Catherine, cooking the dishes our founders grew up with.","Une cuisine de quartier sur Côte-Sainte-Catherine, avec les plats de notre enfance.","Una cucina di quartiere su Côte-Sainte-Catherine, con i piatti con cui siamo cresciuti.","一家开在 Côte-Sainte-Catherine 的街坊小馆，做我们从小吃到大的家乡味。","مطبخ ديال الحي فـ Côte-Sainte-Catherine، كنطيبو فيه الماكلة اللي كبرنا عليها."],
+cta:["See the menu","Voir le menu","Vedi il menù","查看菜单","شوف المنيو"],
+hours:["Open Wednesday to Sunday, 8 am to 10 pm. Closed Monday and Tuesday.","Ouvert du mercredi au dimanche, de 8 h à 22 h. Fermé le lundi et le mardi.","Aperto da mercoledì a domenica, dalle 8 alle 22. Chiuso lunedì e martedì.","周三至周日营业，早上8点至晚上10点。周一和周二休息。","محلولين من الأربعاء حتى الأحد، من 8 د الصباح حتى ل 10 د الليل. مسدودين نهار الإثنين والثلاثاء."],
+k_t:["Five kitchens under one roof","Cinq cuisines sous un même toit","Cinque cucine sotto lo stesso tetto","一个屋檐下的五种厨房","خمس مطابخ تحت سقف واحد"],
+k_p:["Pick one, or taste them all. Nobody at our table minds.","Choisissez-en une, ou goûtez-les toutes. Personne ne s'en plaindra chez nous.","Scegline una o assaggiale tutte. Da noi nessuno si offende.","选一种，或全都尝尝，在我们这里都欢迎。","اختار واحد ولا دوق الكل. عندنا ما كاين لي كيقول لا."],
+r_in:["India","Inde","India","印度","الهند"],r_it:["Italy","Italie","Italia","意大利","إيطاليا"],r_ma:["Morocco","Maroc","Marocco","摩洛哥","المغرب"],r_cn:["China","Chine","Cina","中国","الصين"],r_fr:["France","France","Francia","法国","فرنسا"],
+m_t:["The menu","Le menu","Il menù","菜单","المنيو"],
+m_p:["One special from each kitchen, all day long. Prices in CAD.","Une spécialité de chaque cuisine, toute la journée. Prix en $ CA.","Una specialità per ogni cucina, tutto il giorno. Prezzi in CAD.","每种厨房一道招牌菜，全天供应。价格为加元。","سبيسيالتي وحدة من كل مطبخ، طول النهار. الأثمنة بالدولار الكندي."],
+b:["Breakfast","Déjeuner","Colazione","早餐","فطور"],l:["Lunch","Dîner","Pranzo","午餐","غدا"],d:["Dinner","Souper","Cena","晚餐","عشا"],s:["Snacks","Collations","Spuntini","小吃","سناكات"],k:["Drinks","Boissons","Bevande","饮品","مشروبات"],
+a_t:["Our story","Notre histoire","La nostra storia","我们的故事","حكايتنا"],
+a_1:["La Tablée started around a kitchen table, with five friends swapping recipes from home: Italy, Morocco, France, India and China.","La Tablée est née autour d'une table de cuisine, avec cinq amis qui s'échangeaient les recettes de chez eux : Italie, Maroc, France, Inde et Chine.","La Tablée è nata attorno a un tavolo di cucina, con cinque amici che si scambiavano le ricette di casa: Italia, Marocco, Francia, India e Cina.","La Tablée 始于一张厨房餐桌，五位朋友互相分享家乡的食谱：意大利、摩洛哥、法国、印度和中国。","La Tablée بدات على طبلة د الكوزينة، مع خمس د الصحاب كيتبادلو وصفات د الدار: إيطاليا، المغرب، فرنسا، الهند والصين."],
+a_2:["We opened our doors to the neighbourhood so every plate tastes like Sunday lunch at family's place. Pull up a chair.","Nous avons ouvert nos portes au quartier pour que chaque assiette ait le goût d'un dîner du dimanche en famille. Tirez une chaise.","Abbiamo aperto le porte al quartiere perché ogni piatto sappia di pranzo della domenica in famiglia. Prendi una sedia.","我们向街坊敞开大门，让每一道菜都有周日家庭午餐的味道。请坐。","حللنا بابنا للحي باش كل طبق يعطيك حال غدا الأحد عند العائلة. جبد كرسي."],
+a_f:["Meet the five of us","Nous cinq","Noi cinque","我们五个人","حنا الخمسة"],
+sig:["Signature dish","Plat signature","Piatto forte","招牌菜","الطبق ديالو"],
+c_t:["Come say hello","Passez nous dire bonjour","Vieni a salutarci","来打个招呼","جي سلم علينا"],
+c_a:["Address","Adresse","Indirizzo","地址","العنوان"],c_h:["Hours","Horaires","Orari","营业时间","الأوقات"],c_p:["Phone","Téléphone","Telefono","电话","التيليفون"],c_e:["Email","Courriel","Email","电子邮件","الإيميل"],
+c_hh:["Open Wednesday to Sunday, 8 am to 10 pm. Closed Monday and Tuesday.","Ouvert du mercredi au dimanche, de 8 h à 22 h. Fermé le lundi et le mardi.","Aperto da mercoledì a domenica, dalle 8 alle 22. Chiuso lunedì e martedì.","周三至周日营业，早上8点至晚上10点。周一和周二休息。","محلولين من الأربعاء حتى الأحد، من 8 د الصباح حتى ل 10 د الليل. مسدودين نهار الإثنين والثلاثاء."],
+f_n:["Your name","Votre nom","Il tuo nome","您的姓名","سميتك"],f_m:["Allergies or notes (optional)","Allergies ou notes (facultatif)","Allergie o note (facoltativo)","过敏或备注（选填）","الحساسية ولا ملاحظات (اختياري)"],f_s:["Request a table","Demander une table","Richiedi un tavolo","申请订位","طلب طاولة"],
+f_ok:["Thanks! We'll confirm your table by phone or email.","Merci ! Nous confirmerons votre table par téléphone ou courriel.","Grazie! Confermeremo il tavolo per telefono o email.","谢谢！我们会通过电话或邮件确认您的订位。","شكرا! غادي نأكدو ليك الطاولة بالتيليفون ولا الإيميل."],
+st_o:["Open now, until","Ouvert maintenant, jusqu'à","Aperto ora, fino alle","营业中，营业至","محلولين دابا، حتى ل"],
+st_c:["Closed now. Opens","Fermé pour le moment. Ouvre","Chiuso ora. Apre","现已打烊。开门时间：","مسدودين دابا. كنحلو"],
+skip:["Skip to content","Aller au contenu","Vai al contenuto","跳到内容","دوز للمحتوى"],
+dir:["Get directions","Obtenir l'itinéraire","Indicazioni stradali","获取路线","شوف الطريق"],
+call:["Call us","Appelez-nous","Chiamaci","致电我们","عيط لينا"],
+veg:["Vegetarian","Végétarien","Vegetariano","素食","نباتي"],
+veg_f:["Vegetarian only","Végétarien seulement","Solo vegetariano","仅看素食","غير النباتي"],
+nov:["No vegetarian dish in this category. Try Dinner or Snacks.","Aucun plat végétarien dans cette catégorie. Essayez le souper ou les collations.","Nessun piatto vegetariano in questa categoria. Prova cena o spuntini.","此类别暂无素食菜品，可以看看晚餐或小吃。","ما كاين حتى طبق نباتي فهاد الصنف. جرب العشا ولا السناكات."],
+f_t:["Book a table","Réserver une table","Prenota un tavolo","预订餐桌","احجز طاولة"],
+f_c:["Phone or email","Téléphone ou courriel","Telefono o email","电话或邮箱","التيليفون ولا الإيميل"],
+f_d:["Date","Date","Data","日期","التاريخ"],f_ti:["Time","Heure","Ora","时间","الوقت"],f_g:["Guests","Personnes","Persone","人数","عدد الأشخاص"],
+e_cl:["We're closed on Mondays and Tuesdays. Please pick another day.","Nous sommes fermés le lundi et le mardi. Choisissez un autre jour.","Siamo chiusi il lunedì e il martedì. Scegli un altro giorno.","周一和周二休息，请选择其他日期。","مسدودين نهار الإثنين والثلاثاء. اختار شي نهار آخر."],
+e_gr:["For groups of 5 or more, please call us to book.","Pour les groupes de 5 personnes ou plus, appelez-nous pour réserver.","Per gruppi da 5 persone in su, chiamaci per prenotare.","5人或以上团体请致电预订。","للمجموعات د 5 ولا كتر، عيطو لينا باش تحجزو."],
+hal:["Halal","Halal","Halal","清真","حلال"],
+hal_n:["Every dish with meat can be made halal. Just tell us when you order.","Tous nos plats de viande peuvent être préparés halal. Dites-le-nous à la commande.","Tutti i piatti di carne possono essere preparati halal. Dillo al momento dell'ordine.","所有肉类菜品均可做成清真，点餐时告诉我们即可。","أي طبق فيه اللحم يقدر يتحضر حلال. غير قولها لينا فوقت الطلب."],
+q6:["Do you have halal options?","Proposez-vous des options halal ?","Avete opzioni halal?","有清真选择吗？","واش عندكم ماكلة حلال؟"],
+a6:["Yes. Every dish with meat can be made halal. Just tell us when you order or book.","Oui. Tous nos plats de viande peuvent être préparés halal. Dites-le-nous à la commande ou à la réservation.","Sì. Tutti i piatti di carne possono essere preparati halal. Diccelo quando ordini o prenoti.","有。所有肉类菜品都可以做成清真，点餐或订位时告诉我们即可。","إييه. أي طبق فيه اللحم يقدر يتحضر حلال. قولها لينا فوقت الطلب ولا الحجز."],
+vgn:["Vegan","Végétalien","Vegano","纯素","فيغان"],
+dfr:["Dairy-free","Sans produits laitiers","Senza latticini","无乳制品","بلا حليب"],
+gfr:["Gluten-free","Sans gluten","Senza glutine","无麸质","بلا كلوتين"],
+opt:["option available","disponible en option","disponibile come opzione","可选","متوفر بالطلب"],
+dlg:["Dietary options","Options alimentaires","Opzioni alimentari","饮食选项","الخيارات الغذائية"],
+cu:["From our five kitchens","De nos cinq cuisines","Dalle nostre cinque cucine","来自我们的五种厨房","من المطابخ الخمسة ديالنا"],
+cl:["Some more classic options","D'autres classiques","Altri classici","更多经典选择","اختيارات كلاسيكية أخرى"],
+cls:["Classic","Classique","Classico","经典","كلاسيكي"],
+byo:["Bringing your own wine? Feel free to bring your own bottle for special occasions!","Vous apportez votre vin ? N'hésitez pas à apporter votre propre bouteille pour les occasions spéciales !","Porti il tuo vino? Sentiti libero di portare la tua bottiglia per le occasioni speciali!","想自带葡萄酒？特殊场合欢迎自带酒水！","بغيتي تجيب النبيذ ديالك؟ مرحبا بيك تجيب القنينة ديالك فالمناسبات الخاصة!"],
+q_t:["Good to know","Bon à savoir","Da sapere","须知","مزيان تعرف"],
+q1:["Do you have vegetarian options?","Avez-vous des options végétariennes ?","Avete opzioni vegetariane?","有素食选择吗？","واش عندكم ماكلة نباتية？"],
+a1:["Yes. Every kitchen has vegetarian dishes, and our Palak Paneer is a favourite.","Oui. Chaque cuisine propose des plats végétariens, et notre Palak Paneer est un favori.","Sì. Ogni cucina ha piatti vegetariani, e il nostro Palak Paneer è tra i preferiti.","有。每种厨房都有素食菜品，我们的 Palak Paneer 很受欢迎。","إييه. كل مطبخ فيه أطباق نباتية، والبالاك بنير ديالنا كيعجب بزاف د الناس."],
+q2:["I have a food allergy. What should I do?","J'ai une allergie alimentaire. Que dois-je faire ?","Ho un'allergie alimentare. Cosa devo fare?","我有食物过敏，该怎么办？","عندي الحساسية د الماكلة، شنو ندير？"],
+a2:["Tell us when you order or book. We'll let the kitchen know and adapt what we can.","Dites-le-nous à la commande ou à la réservation. Nous préviendrons la cuisine et adapterons ce que nous pouvons.","Diccelo quando ordini o prenoti. Avviseremo la cucina e adatteremo quello che possiamo.","点餐或订位时告诉我们，我们会通知厨房，并尽力调整。","قولها لينا فوقت الطلب ولا الحجز. غادي نعلمو الكوزينة ونبدلو اللي نقدرو."],
+q3:["Do you have high chairs for kids?","Avez-vous des chaises hautes ?","Avete seggioloni per bambini?","有儿童餐椅吗？","واش عندكم كراسي عالية للدراري؟"],
+a3:["Yes, high chairs and booster seats are available. Just ask at the door.","Oui, chaises hautes et réhausseurs sont disponibles. Demandez à l'entrée.","Sì, abbiamo seggioloni e rialzi. Chiedi all'ingresso.","有，提供儿童高脚椅和加高座椅，请在门口告知。","إييه، كاينين كراسي عالية ومرافع. سولنا فالباب."],
+q4:["Is the restaurant accessible?","Le restaurant est-il accessible ?","Il locale è accessibile?","餐厅有无障碍设施吗？","واش المطعم ساهل الوصول؟"],
+a4:["Yes. The entrance is step-free and we have an accessible washroom.","Oui. L'entrée est de plain-pied et nous avons une toilette accessible.","Sì. L'ingresso è senza gradini e c'è un bagno accessibile.","有。入口无台阶，并设有无障碍洗手间。","إييه. الباب بلا درج وكاين بيت الما مهيأ."],
+q5:["Can I book for a group or a birthday?","Puis-je réserver pour un groupe ou un anniversaire ?","Posso prenotare per un gruppo o un compleanno?","可以为团体或生日订位吗？","واش نقدر نحجز لمجموعة ولا لعيد ميلاد؟"],
+a5:["Groups of 5 or more: give us a call. For birthdays, ask about our dessert surprise.","Groupes de 5 personnes ou plus : appelez-nous. Pour un anniversaire, demandez notre surprise dessert.","Gruppi da 5 persone in su: chiamaci. Per i compleanni, chiedi della nostra sorpresa dolce.","5人或以上团体请致电。生日请询问我们的甜点惊喜。","المجموعات د 5 ولا كتر: عيطو لينا. لعيد الميلاد، سولنا على مفاجأة الحلوى."],
+foot:["A fictional restaurant, created for a school project.","Un restaurant fictif, créé pour un projet scolaire.","Un ristorante fittizio, creato per un progetto scolastico.","一家虚构的餐厅，为学校项目而创作。","مطعم خيالي، تصاوب فمشروع د المدرسة."]
+};
+const C={in:"#D98A1F",it:"#4E7B3F",ma:"#1F6F78",cn:"#2F4B7C",fr:"#7A5C99"};
+const M={
+b:{c:[
+["in","Masala Dosa",9,"A delicious crispy fermented rice-and-lentil crepe filled with spiced potatoes","Une délicieuse crêpe croustillante de riz et lentilles fermentés, garnie de pommes de terre épicées","VG H GF",""],
+["it","Cornetto alla Crema",5,"Flaky Italian pastry filled with vanilla custard","Viennoiserie italienne feuilletée fourrée à la crème vanillée","V H",""],
+["ma","Msemen & Honey",7,"Layered Moroccan flatbread served with honey","Pain plat marocain feuilleté servi avec du miel","V H","VG"],
+["cn","Congee 粥",8,"Slow-cooked Chinese rice porridge with a creamy texture","Bouillie de riz chinoise mijotée lentement, onctueuse","H","V VG DF"],
+["fr","Croissant au Beurre",4,"Buttery French pastry with crisp, flaky layers","Viennoiserie française au beurre, croustillante et feuilletée","V H",""]],
+x:[
+["","Pancakes",8,"Fluffy pancakes served with fresh berries and maple syrup","Pancakes moelleux servis avec des petits fruits frais et du sirop d'érable","V H","VG GF"],
+["","Classic Breakfast Plate",12,"Two eggs with roasted potatoes, toast and seasonal fruits","Deux œufs, pommes de terre rôties, rôtie et fruits de saison","V H","VG GF"],
+["","Avocado Toast",9,"Toasted sourdough topped with creamy avocado, cherry tomatoes and herbs","Pain au levain grillé garni d'avocat crémeux, de tomates cerises et de fines herbes","VG H","GF"],
+["","Yogurt & Granola Bowl",5,"Creamy yogurt with granola and fresh berries","Yogourt crémeux avec granola et petits fruits frais","V H","VG DF GF"]]},
+l:{c:[
+["in","Butter Chicken",16,"Tender chicken in a creamy, spiced tomato sauce","Poulet tendre dans une sauce crémeuse de tomates épicées","H GF",""],
+["it","Lasagne della Nonna",17,"Layers of pasta, tomato sauce, meat and melted cheese","Couches de pâtes, sauce tomate, viande et fromage fondu","H","GF"],
+["ma","Chicken Tajine",17,"Tender chicken slowly cooked with Moroccan spices and vegetables in a traditional tajine","Poulet tendre mijoté lentement avec des épices marocaines et des légumes dans un tajine traditionnel","H","V"],
+["cn","Dan Dan Noodles",15,"Chinese wheat noodles with a savory, spicy sauce with chili and sesame","Nouilles de blé chinoises dans une sauce salée et épicée au piment et au sésame","H","V VG"],
+["fr","Croque-Madame",14,"Toasted ham and cheese sandwich topped with a fried egg","Sandwich grillé au jambon et au fromage, couronné d'un œuf au plat","H","V GF"],
+["cn","Tomato & Egg Stir-fry 番茄炒蛋",13,"Soft scrambled eggs stir-fried with delicious tomatoes","Œufs brouillés moelleux sautés avec de délicieuses tomates","V H DF GF",""]],
+x:[
+["","Margherita Pizza",13,"Thin crust pizza topped with tomato sauce, mozzarella and fresh basil","Pizza à croûte mince, sauce tomate, mozzarella et basilic frais","V H","VG DF GF"],
+["","Classic Burger",12,"Grilled beef patty in a toasted bun with lettuce, tomato, onion and house sauce","Galette de bœuf grillée dans un pain grillé avec laitue, tomate, oignon et sauce maison","H","V GF"],
+["","Grilled Chicken Sandwich",10,"Grilled chicken with lettuce, tomato and creamy sauce","Poulet grillé avec laitue, tomate et sauce crémeuse","H","DF GF"],
+["","Caesar Salad",8,"Crisp romaine lettuce with creamy Caesar dressing, parmesan and croutons","Laitue romaine croustillante, sauce César crémeuse, parmesan et croûtons","V H","VG"]]},
+d:{c:[
+["in","Palak Paneer",17,"Indian paneer cheese cubes simmered in a creamy, spiced spinach sauce","Cubes de fromage paneer mijotés dans une sauce crémeuse d'épinards épicés","V H","VG DF"],
+["it","Risotto ai Funghi",18,"Creamy Italian risotto with sautéed mushrooms and parmesan","Risotto italien crémeux aux champignons sautés et au parmesan","V H","VG DF"],
+["ma","Lamb Couscous",21,"Traditional couscous served with tender lamb and aromatic spices","Couscous traditionnel servi avec de l'agneau tendre et des épices aromatiques","H DF",""],
+["cn","Mapo Tofu",16,"Soft tofu cooked in a savory numbing Sichuan pepper and chili bean sauce","Tofu soyeux dans une sauce salée au poivre du Sichuan et à la pâte de piment","VG H DF","GF"],
+["fr","Bœuf Bourguignon",22,"Tender beef slowly braised in a rich French-style sauce with onions, carrots and herbs","Bœuf tendre braisé lentement dans une riche sauce à la française, avec oignons, carottes et fines herbes","H DF","GF"]],
+x:[
+["","Carbonara",18,"Spaghetti tossed with egg, parmesan and crispy bacon in a rich, creamy-style sauce","Spaghetti à l'œuf, au parmesan et au bacon croustillant dans une sauce riche et crémeuse","H","V"],
+["","Four-Cheese Pizza",17,"Crisp pizza crust topped with tomato sauce and a blend of four melted cheeses","Pâte à pizza croustillante, sauce tomate et mélange de quatre fromages fondus","V H","VG DF GF"],
+["","Steak Frites",20,"Grilled steak served with crispy golden fries and house sauce","Steak grillé servi avec des frites dorées et croustillantes et la sauce maison","H DF GF",""],
+["","Grilled Salmon",22,"Seasoned salmon fillet grilled until tender and served with seasonal vegetables","Filet de saumon assaisonné grillé à point, servi avec des légumes de saison","H DF GF",""]]},
+s:{c:[
+["in","Samosa",6,"Crispy pastry filled with seasoned potatoes and aromatic spices","Pâte croustillante farcie de pommes de terre assaisonnées et d'épices aromatiques","VG H DF","GF"],
+["it","Arancini",8,"Crispy Italian rice balls with a savory cheese filling","Boulettes de riz italiennes croustillantes à la garniture salée de fromage","V H","VG DF GF"],
+["ma","Briouats",7,"Crispy Moroccan pastry with a savory or sweet filling","Pâtisserie marocaine croustillante à la garniture salée ou sucrée","H","V VG GF"],
+["cn","Pork & Chive Dumplings",9,"Chinese dumplings filled with seasoned pork and fresh chives","Raviolis chinois farcis de porc assaisonné et de ciboulette fraîche","","H V VG"],
+["fr","Crêpe Sucrée",6,"Thin French crêpe served warm with a sweet topping","Crêpe française fine servie chaude avec une garniture sucrée","V H","VG DF"]],
+x:[
+["","Grilled Cheese Sandwich",4,"Toasted bread with melted cheese","Sandwich grillé au fromage fondu","V H","DF GF"],
+["","French Fries",5,"Crispy golden fries","Frites dorées et croustillantes","VG H DF GF",""],
+["","Chocolate Chip Cookie",4,"Soft cookie with chocolate chips","Biscuit moelleux aux pépites de chocolat","V H","DF GF"],
+["","Cheesecake",7,"Creamy classic cheesecake","Gâteau au fromage crémeux classique","V H","VG DF GF"],
+["","Fresh Fruit Bowl",6,"Seasonal fresh fruit","Fruits frais de saison","VG H DF GF",""]]},
+k:{c:[
+["in","Karak Chai",4,"Black tea simmered with milk and aromatic spices like cardamom and cinnamon","Thé noir mijoté avec du lait et des épices aromatiques comme la cardamome et la cannelle","V H GF","VG DF"],
+["it","Espresso Affogato",6,"Hot espresso poured over vanilla gelato","Espresso chaud versé sur du gelato à la vanille","V H GF","DF"],
+["ma","Moroccan Mint Tea",4,"Tea made with fresh mint and green tea, traditionally served sweet","Thé à la menthe fraîche et au thé vert, servi sucré selon la tradition","VG H DF GF",""],
+["cn","Jasmine Tea 茉莉花茶",4,"Chinese green tea scented with jasmine blossoms","Thé vert chinois parfumé aux fleurs de jasmin","VG H DF GF",""],
+["fr","Chocolat Chaud",5,"Rich French-style hot chocolate","Chocolat chaud onctueux à la française","V H","VG DF GF"]],
+x:[
+["","Coffee",4,"Freshly brewed coffee, with or without milk","Café infusé frais, avec ou sans lait","VG H DF GF",""],
+["","Homemade Lemonade",5,"Fresh-squeezed lemonade, made in-house","Limonade maison au citron pressé","VG H DF GF",""],
+["","Seasonal Mocktail",8,"An alcohol-free creation that changes with the season","Une création sans alcool qui change au fil des saisons","H","VG DF GF"]]}
+};
+const F=[["Giovanni","it","Lasagne della Nonna"],["Hibat","ma","Chicken Tajine"],["Capucine","fr","Croque-Madame"],["Sabrina","cn","Mapo Tofu"],["Istichane","in","Butter Chicken"]];
+const RTL=[0,0,0,0,1];let li=0,first=1;
+const now=()=>new Date(new Date().toLocaleString("en-US",{timeZone:"America/Toronto"}));
+let cat=(h=>h<11?"b":h<16?"l":"d")(now().getHours());
+const P=[["in","नमस्ते"],["it","Ciao"],["ma","مرحبا"],["cn","你好"],["fr","Bonjour"]];
+const t=k=>T[k][li],$=id=>document.getElementById(id);
+const TG={V:"veg",VG:"vgn",H:"hal",DF:"dfr",GF:"gfr"};
+const badge=(c,d)=>`<i class="vg${c=="H"?" hl":""}${d?" dsh":""}">${t(TG[c])}${d?`<span class="sr"> – ${t("opt")}</span>`:""}</i>`;
+function row([r,n,p,en,fr,a,o]){
+  let A=a?a.split(" "):[];if(A.includes("VG"))A=A.filter(x=>x!="V");
+  const O=o?o.split(" "):[];
+  return `<li class="dish" style="--c:${r?C[r]:"var(--muted)"}"><span class="dot"></span><span class="dt"><b dir="auto">${n}</b><small>${r?t("r_"+r):t("cls")}</small><span class="ds" dir="auto">${li==1?fr:en}</span><span class="tg">${A.map(x=>badge(x)).join("")}${O.map(x=>badge(x,1)).join("")}</span></span><span class="pr">$${p}</span></li>`;
+}
+function menu(){
+  document.querySelectorAll("#tabs button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.k==cat));
+  const v=$("vg").checked,f=L=>L.filter(x=>!v||/(^| )(V|VG)( |$)/.test(x[5])),cu=f(M[cat].c),cl=f(M[cat].x);
+  let h="";
+  if(cu.length)h+=`<li class="sec">${t("cu")}</li>`+cu.map(row).join("");
+  if(cl.length)h+=`<li class="sec">${t("cl")}</li>`+cl.map(row).join("");
+  $("dishes").innerHTML=h||`<li class="nov">${t("nov")}</li>`;
+  $("byo").hidden=cat!="k";
+}
+function stat(){
+  const loc=["en","fr","it","zh","ar-MA"][li],n=now(),d=n.getDay(),h=n.getHours()+n.getMinutes()/60,ok=[0,3,4,5,6];
+  const tf=x=>new Date(2024,0,1,x).toLocaleTimeString(loc,{hour:"numeric",minute:"2-digit"}),wd=x=>new Date(2024,0,7+x).toLocaleDateString(loc,{weekday:"long"});
+  const o=ok.includes(d)&&h>=8&&h<22;let m;
+  if(o)m=t("st_o")+" "+tf(22);
+  else if(ok.includes(d)&&h<8)m=t("st_c")+" "+tf(8);
+  else{let x=d;do{x=(x+1)%7}while(!ok.includes(x));m=t("st_c")+" "+wd(x)+", "+tf(8)}
+  document.querySelectorAll(".stat").forEach(e=>e.innerHTML=`<span class="sd ${o?"on":"off"}"></span>${m}`);
+}
+function setTitle(){const a=document.querySelector("#nav a[aria-current]");document.title="La Tablée"+(a?" – "+a.textContent:"")}
+function focusHead(){const h=document.querySelector(".page:not([hidden]) h1,.page:not([hidden]) h2");if(h){h.tabIndex=-1;h.focus({preventScroll:true})}}
+function draw(){
+  document.documentElement.lang=["en","fr","it","zh","ar-MA"][li];
+  document.documentElement.dir=RTL[li]?"rtl":"ltr";
+  document.querySelectorAll("[data-i18n]").forEach(e=>e.textContent=t(e.dataset.i18n));
+  $("table").innerHTML=P.map(([r,g],i)=>`<li class="${first?"a":""}" style="--c:${C[r]};--i:${i}"><span class="pl" dir="auto">${g}</span><small>${t("r_"+r)}</small></li>`).join("");
+  $("tabs").innerHTML=Object.keys(M).map(k=>`<button aria-pressed="false" data-k="${k}">${t(k)}</button>`).join("");
+  $("lgd").innerHTML=`<b>${t("dlg")}</b>`+["V","VG","H","DF","GF"].map(x=>badge(x)).join("")+`<i class="vg dsh">${t("opt")}</i>`;
+  menu();
+  $("fnd").innerHTML=F.map(([n,r,d])=>`<li style="--c:${C[r]}"><div class="av" aria-hidden="true">${n[0]}</div><b>${n}</b><small>${t("r_"+r)}</small><small>${t("sig")}: <span dir="auto">${d}</span></small></li>`).join("");
+  $("faqs").innerHTML=[1,6,2,3,4,5].map(i=>`<details><summary>${t("q"+i)}</summary><p>${t("a"+i)}</p></details>`).join("");
+  $("ok").textContent="";first=0;stat();setTitle();
+}
+function route(){
+  let h=(location.hash||"#home").slice(1);if(!$(h))h="home";
+  document.querySelectorAll(".page").forEach(p=>p.hidden=p.id!==h);
+  document.querySelectorAll("#nav a").forEach(a=>a.getAttribute("href")==="#"+h?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current"));
+  window.scrollTo(0,0);setTitle();if(route.i)focusHead();route.i=1;
+}
+$("lang").onchange=e=>{li=+e.target.value;draw()};
+$("tabs").onclick=e=>{const k=e.target.dataset.k;if(k){cat=k;menu();}};
+$("vg").onchange=menu;
+{const n=now();$("fd").min=n.getFullYear()+"-"+String(n.getMonth()+1).padStart(2,"0")+"-"+String(n.getDate()).padStart(2,"0")}
+document.querySelector(".skip").onclick=e=>{e.preventDefault();focusHead()};
+$("cf").onsubmit=e=>{e.preventDefault();const w=new Date($("fd").value+"T12:00").getDay();
+  let msg = (w==1||w==2)?t("e_cl"):(+$("fg").value>=5?t("e_gr"):"");
+  $("ok").textContent=msg||t("f_ok");
+  if(!msg)e.target.reset();
+};
+addEventListener("hashchange",route);
+draw();route();
+</script>
+
+<!-- Chatbot Tidio -->
+<script src="//code.tidio.co/ohvomqczuzaf4m1bkyay4uwtkkz5u5ys.js" async></script>
+
+</body>
+</html>
